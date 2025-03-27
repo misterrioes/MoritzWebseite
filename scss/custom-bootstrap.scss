@@ -1,0 +1,89 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+// Step 5: Apply color and typography updates
+
+
+
+// Step 2: Define the font faces (using .ttf files in the parent `fonts/` folder)
+
+// Montserrat
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+	font-weight: 400; // Regular
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat-Bold.ttf') format('truetype');
+	font-weight: 700; // Bold
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat-Italic.ttf') format('truetype');
+	font-weight: 400; // Italic
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat-BoldItalic.ttf') format('truetype');
+	font-weight: 700; // Bold Italic
+	font-style: italic;
+}
+
+// Playfair Display
+@font-face {
+	font-family: 'Playfair Display';
+	src: url('../fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+	font-weight: 400; // Regular
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url('../fonts/PlayfairDisplay-Bold.ttf') format('truetype');
+	font-weight: 700; // Bold
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url('../fonts/PlayfairDisplay-Italic.ttf') format('truetype');
+	font-weight: 400; // Italic
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url('../fonts/PlayfairDisplay-BoldItalic.ttf') format('truetype');
+	font-weight: 700; // Bold Italic
+	font-style: italic;
+}
+
+// Step 3: Update Bootstrap typography variables
+$font-family-base: 'Montserrat', Arial, sans-serif; // Use Montserrat for body text
+$headings-font-family: 'Playfair Display', Georgia, serif; // Use Playfair Display for headings
+
+// Optional: Adjust font sizes and weights
+$font-size-base: 1rem; // Default font size (16px)
+$headings-font-weight: 700; // Bold weight for headings
+$body-font-weight: 400; // Normal weight for body text
+$line-height-base: 1.5; // Default line height
+$line-height-lg: 1.75; // Larger text line height
+$line-height-sm: 1.25; // Smaller text line height
+
+
+// Step 4: Define custom colors
+$primary: #d9e7c8; // Light green for primary
+$secondary: #f0c69c; // Peach for secondary
+$success: #246725; // Dark green for success
+$theme-colors: (
+	"primary": #d9e7c8,
+	"secondary":#f0c69c,
+	"success": #246725
+);
+@import "../node_modules/bootstrap/scss/bootstrap";

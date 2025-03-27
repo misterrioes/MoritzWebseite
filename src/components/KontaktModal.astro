@@ -1,0 +1,95 @@
+<!-- The Modal -->
+<div
+	class="modal fade"
+	id="contactModal"
+	tabindex="-1"
+	aria-labelledby="contactModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<form class="needs-validation" novalidate id="contactForm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="contactModalLabel">Kontaktformular</h5>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3">
+						<label for="nameInput" class="form-label">Name</label>
+						<input
+							type="text"
+							class="form-control"
+							id="nameInput"
+							placeholder="Name"
+						/>
+					</div>
+					<div class="mb-3">
+						<label for="emailInput" class="form-label">E-Mail</label>
+						<input
+							type="email"
+							class="form-control"
+							id="emailInput"
+							placeholder="E-Mail"
+							required
+						/>
+					</div>
+					<div class="mb-3">
+						<label for="phoneInput" class="form-label">Telefon (optional)</label
+						>
+						<input
+							type="tel"
+							class="form-control"
+							id="phoneInput"
+							placeholder="Telefon"
+						/>
+					</div>
+					<div class="mb-3">
+						<label for="messageInput" class="form-label">Nachricht</label>
+						<textarea
+							class="form-control"
+							id="messageInput"
+							placeholder="Nachricht"
+							required></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal">Schließen</button
+					>
+					<button type="submit" class="btn btn-primary">Senden</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script>
+	(() => {
+		"use strict";
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		const forms =
+			document.querySelectorAll<HTMLFormElement>(".needs-validation");
+
+		// Loop over them and prevent submission
+		Array.from(forms).forEach((form) => {
+			form.addEventListener(
+				"submit",
+				(event) => {
+					if (!form.checkValidity()) {
+						event.preventDefault();
+						event.stopPropagation();
+						form.classList.add("was-validated");
+					}
+				},
+				false,
+			);
+		});
+	})();
+</script>

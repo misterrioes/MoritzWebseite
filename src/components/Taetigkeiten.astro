@@ -1,0 +1,113 @@
+---
+import Bild1 from "@images/1zu1FensterEingemauert.jpg";
+import Bild2 from "@images/1zu1Pool.jpg";
+import Bild3 from "@images/1zu1MoritzImBagger.jpg";
+---
+
+<h2>Dienstleistungen</h2>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xxl-3 col-md-6 col-sm-12">
+			<div class="image-container">
+				<img src={Bild1.src} alt="Image" class="image" />
+				<div class="overlay-box-heading">
+					<h3 class="imageHeading">Individuelle Mauerkunst</h3>
+				</div>
+				<div class="overlay-box">
+					<p>Hover Text 1</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xxl-3 col-md-6 col-sm-12">
+			<div class="image-container">
+				<img src={Bild2.src} alt="Image" class="image" />
+				<div class="overlay-box-heading">
+					<h3 class="imageHeading">MaurerArbeiten</h3>
+				</div>
+				<div class="overlay-box">
+					<p>Hover Text 2</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xxl-3 col-md-6 col-sm-12">
+			<div class="image-container">
+				<img src={Bild3.src} alt="Image" class="image" />
+				<div class="overlay-box-heading">
+					<h3 class="imageHeading">Baggerarbeiten</h3>
+				</div>
+				<div class="overlay-box">
+					<p>Hover Text 3</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xxl-3 col-md-6 col-sm-12">
+			<div class="image-container">
+				<img src={Bild3.src} alt="Image" class="image" />
+				<div class="overlay-box-heading">
+					<h3 class="imageHeading">Baggerarbeiten</h3>
+				</div>
+				<div class="overlay-box">
+					<p>Hover Text 3</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.image-container {
+		position: relative;
+		padding: 10px;
+		width: 100%;
+		height: 300px; /* Set a fixed height for the images */
+		overflow: hidden; /* Prevents the image from overflowing */
+	}
+
+	.image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.image-container:hover .image {
+		transform: scale(1.1);
+	}
+	.overlay-box-heading {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		color: rgba(var(--bs-primary-rgb), 1);
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		align-items: center;
+		opacity: 1;
+	}
+
+	.image-container:hover .overlay-box-heading {
+		display: none;
+	}
+
+	.overlay-box {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(var(--bs-secondary-rgb), 0.5);
+		color: rgba(var(--bs-primary-rgb), 1);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	.image-container:hover .overlay-box {
+		opacity: 1;
+	}
+</style>

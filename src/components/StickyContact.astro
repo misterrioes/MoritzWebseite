@@ -1,0 +1,66 @@
+<div class="sticky-contact">
+	<a href="https://api.whatsapp.com/send?phone=+499123456789" target="_blank">
+		<i class="bi bi-whatsapp"></i>
+		<p>whatsapp</p>
+	</a>
+	<a href="mailto:example@example.com">
+		<i class="bi bi-envelope"></i>
+		<p>Email</p>
+	</a>
+	<a href="tel:+499123456789">
+		<i class="bi bi-telephone"></i>
+		<p>Telefon</p>
+	</a>
+	<a
+		href="https://www.instagram.com/moritz.zimmer_gartengestaltung/"
+		target="_blank"
+	>
+		<i class="bi bi-instagram"></i>
+		<p>Instagram</p>
+	</a>
+	<style>
+		.sticky-contact {
+			position: fixed;
+			padding: 10px;
+			top: 126px; /* 10% von oben */
+			/* 5% von links */
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			z-index: 2;
+			text-align: center;
+		}
+
+		.sticky-contact p {
+			margin-bottom: 0px;
+			margin-left: 5px;
+		}
+
+		.sticky-contact a {
+			color: #000;
+			text-decoration: underline;
+			font-size: 24px;
+			display: flex; /* Fügt die Icons und Texte nebeneinander */
+			align-items: center; /* Zentriert die Icons und Texte vertikal */
+		}
+
+		/* Für kleine Bildschirme */
+		@media (max-width: 768px) {
+			.sticky-contact {
+				top: auto; /* Entfernt die feste Position von oben */
+				bottom: 10px; /* Platziert das Div 10px von unten */
+				left: 10px; /* Platziert das Div 10px von links */
+				flex-direction: row; /* Icons und Texte nebeneinander auf einer Zeile */
+				/* Verteilt die Elemente gleichmäßig */
+			}
+			.sticky-contact a {
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+		}
+	</style>
+</div>
