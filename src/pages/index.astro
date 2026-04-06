@@ -5,12 +5,26 @@ import KontaktModal from "@components/KontaktModal.astro";
 import Taetigkeiten from "@components/Taetigkeiten.astro";
 import KontaktArten from "@components/StickyContact.astro";
 import Standort from "@components/Standort.astro";
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
+import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
+import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
+import MoritzArbeiten from "@images/16zu9Plakat.jpg";
 ---
 
 <Baselayout>
-    <BilderKarussel />
+    <BilderKarussel
+        title="Moritz Zimmer - GartenGestaltung MaurerArbeiten und Antikbaustoffe"
+        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
+        images={[
+            {
+                src: MoritzSchaufeln.src,
+                hdSrc: MoritzSchaufelnHD.src,
+                alt: "Moritz am Schaufeln",
+            },
+            { src: MoritzBagger.src, alt: "Moritz im Auto" },
+            { src: MoritzArbeiten.src, alt: "Plakat" },
+        ]}
+    />
     <hr />
     <Taetigkeiten />
     <KontaktModal />

@@ -1,0 +1,21 @@
+---
+import ServicePage from "@components/ServicePage.astro";
+import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
+import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
+import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
+import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+---
+
+<ServicePage
+    title="Pflasterarbeiten"
+    description="Unsere Pflasterarbeiten umfassen Einfahrten, Terrassen und Wege. Wir verbinden Design mit Funktionalität und legen langlebige, optisch ansprechende Pflasterflächen nach Ihren Wünschen an."
+    images={[
+        {
+            src: MoritzSchaufeln.src,
+            hdSrc: MoritzSchaufelnHD.src,
+            alt: "Moritz am Schaufeln",
+        },
+        { src: MoritzBagger.src, alt: "Moritz im Auto" },
+        { src: MoritzArbeiten.src, alt: "Plakat" },
+    ]}
+/>

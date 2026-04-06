@@ -1,8 +1,10 @@
 ---
-import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
-import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
-import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
-import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+export interface Props {
+    title: string;
+    description: string;
+    images: Array<{ src: string; alt: string; hdSrc?: string }>;
+}
+const { title, description, images } = Astro.props;
 ---
 
 <div
@@ -11,68 +13,43 @@ import MoritzArbeiten from "@images/16zu9Plakat.jpg";
     data-bs-ride="carousel"
 >
     <div class="carousel-indicators">
-        <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"></button>
-        <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+        {
+            images.map((image, index) => (
+                <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to={index}
+                    class={index === 0 ? "active" : ""}
+                    aria-current={index === 0 ? "true" : ""}
+                    aria-label={image.alt}
+                />
+            ))
+        }
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <picture>
-                <source
-                    media="(min-width: 900px)"
-                    srcset={MoritzSchaufelnHD.src}
-                />
-                <img
-                    src={MoritzSchaufeln.src}
-                    class="d-block w-100"
-                    alt="First slide"
-                    style="object-fit: cover;"
-                />
-            </picture>
-        </div>
-        <div class="MoritzAmSchaufeln carousel-item">
-            <img
-                src={MoritzBagger.src}
-                class="d-block w-100"
-                alt="Second slide"
-                style="object-fit: cover;"
-            />
-        </div>
-        <div class="carousel-item">
-            <img
-                src={MoritzArbeiten.src}
-                class="d-block w-100"
-                alt="Third slide"
-                style="object-fit: cover;"
-            />
-        </div>
+        {
+            images.map((image, index) => (
+                <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+                    <picture>
+                        {image.hdSrc && (
+                            <source
+                                media="(min-width: 900px)"
+                                srcset={image.hdSrc}
+                            />
+                        )}
+                        <img
+                            src={image.src}
+                            class="d-block w-100"
+                            alt={image.alt}
+                            style="object-fit: cover;"
+                        />
+                    </picture>
+                </div>
+            ))
+        }
         <div class="overlay-box">
-            <h3>
-                Moritz Zimmer - GartenGestaltung MaurerArbeiten und
-                Antikbaustoffe
-            </h3>
-            <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam
-            </p>
+            <h3>{title}</h3>
+            <p>{description}</p>
             <button
                 class="btn btn-success btn-lg"
                 data-bs-toggle="modal"
@@ -82,55 +59,55 @@ import MoritzArbeiten from "@images/16zu9Plakat.jpg";
             </button>
         </div>
     </div>
+
+    <style>
+        h3 {
+            margin-bottom: 32px;
+            font-weight: bolder;
+        }
+        p {
+            color: var(--bs-heading-success);
+            font-weight: bold;
+        }
+        .carousel-inner {
+            position: relative; /* Ensure the overlay box is positioned relative to this */
+        }
+        .overlay-box {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center; /* Add this to ensure text is centered */
+            align-items: center;
+            background-color: rgba(var(--bs-secondary-rgb), 0.8);
+            color: var(--bs-success);
+        }
+
+        /* Adjust width based on viewport size */
+        @media (max-width: 992px) {
+            .overlay-box {
+                width: 80%;
+                left: 10%;
+            }
+        }
+
+        @media (min-width: 993px) and (max-width: 1199px) {
+            .overlay-box {
+                width: 50%;
+                left: 10%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .overlay-box {
+                width: 30%;
+                left: 10%;
+            }
+        }
+    </style>
 </div>
-
-<style>
-    h3 {
-        margin-bottom: 32px;
-        font-weight: bolder;
-    }
-    p {
-        color: var(--bs-heading-success);
-        font-weight: bold;
-    }
-    .carousel-inner {
-        position: relative; /* Ensure the overlay box is positioned relative to this */
-    }
-    .overlay-box {
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center; /* Add this to ensure text is centered */
-        align-items: center;
-        background-color: rgba(var(--bs-secondary-rgb), 0.8);
-        color: var(--bs-success);
-    }
-
-    /* Adjust width based on viewport size */
-    @media (max-width: 992px) {
-        .overlay-box {
-            width: 80%;
-            left: 10%;
-        }
-    }
-
-    @media (min-width: 993px) and (max-width: 1199px) {
-        .overlay-box {
-            width: 50%;
-            left: 10%;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .overlay-box {
-            width: 30%;
-            left: 10%;
-        }
-    }
-</style>

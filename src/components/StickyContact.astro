@@ -77,7 +77,8 @@
             const checkScroll = () => {
                 if (
                     window.scrollY + window.innerHeight >=
-                    document.documentElement.scrollHeight - 10
+                        document.documentElement.scrollHeight - 10 &&
+                    window.matchMedia("(max-width: 768px)").matches
                 ) {
                     sticky.classList.add("hidden");
                 } else {

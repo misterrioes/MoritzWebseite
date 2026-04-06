@@ -1,0 +1,21 @@
+---
+import Baselayout from "../layouts/Baselayout.astro";
+import BilderKarussel from "@components/BilderKarusselText.astro";
+import KontaktModal from "@components/KontaktModal.astro";
+import KontaktArten from "@components/StickyContact.astro";
+import Footer from "@components/Footer.astro";
+
+export interface Props {
+    title: string;
+    description: string;
+    images: Array<{ src: string; alt: string; hdSrc?: string }>;
+}
+
+const { title, description, images } = Astro.props;
+---
+
+<Baselayout>
+    <BilderKarussel title={title} description={description} images={images} />
+    <KontaktModal />
+    <KontaktArten />
+</Baselayout>

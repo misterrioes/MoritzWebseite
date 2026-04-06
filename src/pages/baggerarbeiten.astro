@@ -1,0 +1,21 @@
+---
+import ServicePage from "@components/ServicePage.astro";
+import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
+import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
+import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
+import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+---
+
+<ServicePage
+    title="Baggerarbeiten"
+    description="Wir führen Erdarbeiten, Grabungen und Landschaftsgestaltung mit modernen Maschinen und erfahrenen Bedienern aus. Präzise und zuverlässig schaffen wir die Grundlage für Ihre Bauprojekte."
+ images={[
+            {
+                src: MoritzSchaufeln.src,
+                hdSrc: MoritzSchaufelnHD.src,
+                alt: "Moritz am Schaufeln",
+            },
+            { src: MoritzBagger.src, alt: "Moritz im Auto" },
+            { src: MoritzArbeiten.src, alt: "Plakat" },
+        ]}
+/>
