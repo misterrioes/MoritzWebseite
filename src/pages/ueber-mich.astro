@@ -1,0 +1,139 @@
+---
+import Baselayout from "../layouts/Baselayout.astro";
+import BilderKarussel from "@components/BilderKarusselText.astro";
+import KontaktModal from "@components/KontaktModal.astro";
+import KontaktArten from "@components/StickyContact.astro";
+import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
+import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
+import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
+import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+---
+
+<Baselayout>
+    <BilderKarussel
+        title="Über mich"
+        description="Ich begleite Projekte rund um Garten- und Maurerarbeiten mit einem klaren Blick für saubere Ausführung, langlebige Ergebnisse und eine direkte, persönliche Zusammenarbeit."
+        images={[
+            {
+                src: MoritzSchaufeln.src,
+                hdSrc: MoritzSchaufelnHD.src,
+                alt: "Moritz bei der Arbeit",
+            },
+            { src: MoritzBagger.src, alt: "Moritz im Fahrzeug" },
+            { src: MoritzArbeiten.src, alt: "Arbeitsbeispiel" },
+        ]}
+    />
+
+    <section class="content-section container py-5">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-7">
+                <div class="info-card h-100">
+                    <span class="eyebrow">Persönlich. Bodenständig. Direkt.</span>
+                    <h2>Handwerk mit Anspruch und echter Nähe zum Projekt</h2>
+                    <p>
+                        Hinter Moritz Zimmer Gartengestaltung steht kein anonymer
+                        Großbetrieb, sondern persönliche Arbeit mit direktem
+                        Ansprechpartner. Von der ersten Idee bis zur Umsetzung
+                        entsteht jedes Projekt mit einem hohen Anspruch an
+                        Verlässlichkeit, saubere Abläufe und ein Ergebnis, das
+                        langfristig überzeugt.
+                    </p>
+                    <p>
+                        Ob Naturstein, Pflaster oder Baggerarbeiten: Im Mittelpunkt
+                        stehen individuelle Lösungen, die zu Grundstück, Nutzung und
+                        Stil passen. So entstehen Außenbereiche mit Substanz und
+                        Charakter.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="info-card accent-card h-100">
+                    <h3>Worauf Sie sich verlassen können</h3>
+                    <ul class="feature-list">
+                        <li>Persönliche Beratung ohne Umwege</li>
+                        <li>Saubere, strukturierte Ausführung vor Ort</li>
+                        <li>Praktische Lösungen mit Blick auf Langlebigkeit</li>
+                        <li>Verlässliche Kommunikation während des Projekts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+            <div class="col-md-4">
+                <div class="info-card h-100">
+                    <h3>Individuelle Planung</h3>
+                    <p>
+                        Jede Fläche und jedes Grundstück bringt eigene Anforderungen
+                        mit. Deshalb beginnt gute Arbeit mit einem genauen Blick auf
+                        die Situation vor Ort.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card h-100">
+                    <h3>Saubere Umsetzung</h3>
+                    <p>
+                        Präzision, belastbare Materialien und ein sauberer Aufbau
+                        sorgen dafür, dass das Ergebnis nicht nur gut aussieht,
+                        sondern auch im Alltag funktioniert.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card h-100">
+                    <h3>Kurze Wege</h3>
+                    <p>
+                        Direkter Kontakt macht Entscheidungen einfacher. Fragen,
+                        Wünsche und Änderungen lassen sich schnell und unkompliziert
+                        abstimmen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <KontaktModal />
+    <KontaktArten />
+</Baselayout>
+
+<style>
+    .content-section {
+        color: var(--bs-success);
+    }
+
+    .info-card {
+        height: 100%;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: rgba(var(--bs-secondary-rgb), 0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .accent-card {
+        background-color: rgba(var(--bs-secondary-rgb), 0.3);
+    }
+
+    .eyebrow {
+        display: inline-block;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.85rem;
+        font-weight: 700;
+    }
+
+    h2,
+    h3 {
+        margin-bottom: 1rem;
+    }
+
+    .feature-list {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+    .feature-list li + li {
+        margin-top: 0.75rem;
+    }
+</style>

@@ -1,20 +1,25 @@
+---
+import { contactDetails } from "./contactData";
+---
+
 <div class="sticky-contact">
-    <a href="https://api.whatsapp.com/send?phone=+499123456789" target="_blank">
+    <a
+        href={`https://wa.me/${contactDetails.phone}`}
+        target="_blank"
+        rel="noopener"
+    >
         <i class="bi bi-whatsapp"></i>
         <p>whatsapp</p>
     </a>
-    <a href="mailto:example@example.com">
+    <a href={contactDetails.email}>
         <i class="bi bi-envelope"></i>
         <p>Email</p>
     </a>
-    <a href="tel:+499123456789">
+    <a href={contactDetails.phone}>
         <i class="bi bi-telephone"></i>
         <p>Telefon</p>
     </a>
-    <a
-        href="https://www.instagram.com/moritz.zimmer_gartengestaltung/"
-        target="_blank"
-    >
+    <a href={contactDetails.instagramUrl} target="_blank">
         <i class="bi bi-instagram"></i>
         <p>Instagram</p>
     </a>

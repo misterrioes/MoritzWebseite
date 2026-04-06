@@ -2,112 +2,235 @@
 export interface Props {
     title: string;
     description: string;
-    images: Array<{ src: string; alt: string; hdSrc?: string }>;
+    images: Array<{
+        src: string;
+        alt: string;
+        hdSrc?: string;
+        textTitle?: string;
+        text?: string;
+    }>;
 }
+
 const { title, description, images } = Astro.props;
+const hasSlideTexts = images.some((image) => image.text);
 ---
 
-<div
-    id="carouselExampleIndicators"
-    class="carousel slide carousel-fade"
-    data-bs-ride="carousel"
->
-    <div class="carousel-indicators">
-        {
-            images.map((image, index) => (
-                <button
-                    type="button"
-                    data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide-to={index}
-                    class={index === 0 ? "active" : ""}
-                    aria-current={index === 0 ? "true" : ""}
-                    aria-label={image.alt}
-                />
-            ))
-        }
-    </div>
-    <div class="carousel-inner">
-        {
-            images.map((image, index) => (
-                <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
-                    <picture>
-                        {image.hdSrc && (
-                            <source
-                                media="(min-width: 900px)"
-                                srcset={image.hdSrc}
+<div class="carousel-block">
+    <div
+        id="carouselExampleIndicators"
+        class="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+    >
+        <div class="carousel-indicators">
+            {
+                images.map((image, index) => (
+                    <button
+                        type="button"
+                        data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide-to={index}
+                        class={index === 0 ? "active" : ""}
+                        aria-current={index === 0 ? "true" : ""}
+                        aria-label={image.alt}
+                    />
+                ))
+            }
+        </div>
+
+        <div class="carousel-inner">
+            {
+                images.map((image, index) => (
+                    <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+                        <picture>
+                            {image.hdSrc && (
+                                <source
+                                    media="(min-width: 900px)"
+                                    srcset={image.hdSrc}
+                                />
+                            )}
+                            <img
+                                src={image.src}
+                                class="d-block w-100"
+                                alt={image.alt}
+                                style="object-fit: cover;"
                             />
-                        )}
-                        <img
-                            src={image.src}
-                            class="d-block w-100"
-                            alt={image.alt}
-                            style="object-fit: cover;"
-                        />
-                    </picture>
-                </div>
-            ))
-        }
-        <div class="overlay-box">
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <button
-                class="btn btn-success btn-lg"
-                data-bs-toggle="modal"
-                data-bs-target="#contactModal"
-            >
-                Kontaktieren
-            </button>
+                        </picture>
+                    </div>
+                ))
+            }
+
+            <div class="overlay-box">
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <button
+                    class="btn btn-success btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#contactModal"
+                >
+                    Kontaktieren
+                </button>
+            </div>
         </div>
     </div>
 
-    <style>
-        h3 {
-            margin-bottom: 32px;
-            font-weight: bolder;
-        }
-        p {
-            color: var(--bs-heading-success);
-            font-weight: bold;
-        }
-        .carousel-inner {
-            position: relative; /* Ensure the overlay box is positioned relative to this */
-        }
-        .overlay-box {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center; /* Add this to ensure text is centered */
-            align-items: center;
-            background-color: rgba(var(--bs-secondary-rgb), 0.8);
-            color: var(--bs-success);
-        }
-
-        /* Adjust width based on viewport size */
-        @media (max-width: 992px) {
-            .overlay-box {
-                width: 80%;
-                left: 10%;
-            }
-        }
-
-        @media (min-width: 993px) and (max-width: 1199px) {
-            .overlay-box {
-                width: 50%;
-                left: 10%;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .overlay-box {
-                width: 30%;
-                left: 10%;
-            }
-        }
-    </style>
+    {
+        hasSlideTexts && (
+            <div class="slide-text-wrapper container">
+                {images.map((image, index) => (
+                    <div
+                        class={`info-card slide-text-card ${index === 0 ? "active" : ""}`}
+                        data-slide-text={index}
+                    >
+                        <h3 class="slide-text-title">
+                            {image.textTitle ?? image.alt}
+                        </h3>
+                        <p>{image.text}</p>
+                    </div>
+                ))}
+            </div>
+        )
+    }
 </div>
+
+<style>
+    h3 {
+        margin-bottom: 32px;
+        font-weight: bolder;
+    }
+
+    .overlay-box p {
+        color: var(--bs-heading-success);
+        font-weight: bold;
+    }
+
+    .carousel-inner {
+        position: relative;
+    }
+
+    .overlay-box {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        background-color: rgba(var(--bs-secondary-rgb), 0.8);
+        color: var(--bs-success);
+    }
+
+    .slide-text-wrapper {
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+        color: var(--bs-success);
+    }
+
+    .info-card {
+        display: none;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: rgba(var(--bs-secondary-rgb), 0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        text-align: center;
+    }
+
+    .slide-text-card.active {
+        display: block;
+    }
+
+    .slide-text-title {
+        margin-bottom: 1rem;
+        color: var(--bs-success);
+    }
+
+    .slide-text-card p {
+        margin: 0;
+        color: var(--bs-success);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-weight: 500;
+    }
+
+    @media (max-width: 992px) {
+        .overlay-box {
+            width: 80%;
+            left: 10%;
+        }
+
+        .overlay-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .overlay-box p {
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        .overlay-box .btn {
+            font-size: 1rem;
+            padding: 0.6rem 1rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .overlay-box h3 {
+            font-size: 1.2rem;
+        }
+
+        .overlay-box p {
+            font-size: 0.85rem;
+            line-height: 1.35;
+        }
+
+        .overlay-box .btn {
+            font-size: 0.9rem;
+            padding: 0.5rem 0.9rem;
+        }
+    }
+
+    @media (min-width: 993px) and (max-width: 1199px) {
+        .overlay-box {
+            width: 50%;
+            left: 10%;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .overlay-box {
+            width: 30%;
+            left: 10%;
+        }
+    }
+</style>
+
+{
+    hasSlideTexts && (
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const carousel = document.querySelector(
+                    "#carouselExampleIndicators",
+                );
+                const slideTexts = document.querySelectorAll("[data-slide-text]");
+
+                if (!carousel || slideTexts.length === 0) return;
+
+                const setActiveText = (index) => {
+                    slideTexts.forEach((slideText, currentIndex) => {
+                        slideText.classList.toggle(
+                            "active",
+                            currentIndex === index,
+                        );
+                    });
+                };
+
+                carousel.addEventListener("slid.bs.carousel", (event) => {
+                    setActiveText(event.to);
+                });
+            });
+        </script>
+    )
+}

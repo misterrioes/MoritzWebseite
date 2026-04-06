@@ -8,7 +8,13 @@ import Footer from "@components/Footer.astro";
 export interface Props {
     title: string;
     description: string;
-    images: Array<{ src: string; alt: string; hdSrc?: string }>;
+    images: Array<{
+        src: string;
+        alt: string;
+        hdSrc?: string;
+        textTitle?: string;
+        text?: string;
+    }>;
 }
 
 const { title, description, images } = Astro.props;
