@@ -3,46 +3,58 @@
 ---
 
 <footer
-	class="d-flex flex-column align-items-center justify-content-center text-white"
+    class="d-flex flex-column align-items-center justify-content-center text-white"
 >
-	<div class="container text-center">
-		<ul class="list-unstyled">
-			<li>
-				<a href="#" class="text-secondary text-decoration-none">Impressum</a>
-			</li>
-			<li>
-				<a href="#" class="text-secondary text-decoration-none"
-					>Datenschutzrichtlinien</a
-				>
-			</li>
-			<li>
-				<a href="#" class="text-secondary text-decoration-none"
-					>DSGVO Aufklärung</a
-				>
-			</li>
-			<li>
-				<a href="#" class="text-secondary text-decoration-none">AGB's</a>
-			</li>
-			<li>
-				<a href="#" class="text-secondary text-decoration-none"
-					>Widerrufsbelehrung</a
-				>
-			</li>
-		</ul>
-	</div>
+    <div class="container text-center">
+        <ul class="list-unstyled">
+            <li>
+                <a href="#" class="text-secondary text-decoration-none"
+                    >Impressum</a
+                >
+            </li>
+            <li>
+                <a href="#" class="text-secondary text-decoration-none"
+                    >Datenschutzrichtlinien</a
+                >
+            </li>
+            <li>
+                <a href="#" class="text-secondary text-decoration-none"
+                    >DSGVO Aufklärung</a
+                >
+            </li>
+            <li>
+                <a href="#" class="text-secondary text-decoration-none">AGB's</a
+                >
+            </li>
+            <li>
+                <a href="#" class="text-secondary text-decoration-none"
+                    >Widerrufsbelehrung</a
+                >
+            </li>
+        </ul>
+    </div>
 </footer>
 
 <style>
-	footer {
-		width: 100%;
-		background-color: var(--bs-success);
-		margin-top: 20px;
-	}
+    footer {
+        width: 100%;
+        background-color: var(--bs-success);
+        margin-top: 20px;
+    }
 
-	footer .list-unstyled {
-		display: flex;
-		gap: 80px;
-		justify-content: center;
-		margin: 0px;
-	}
+    footer .list-unstyled {
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+        margin: 0px;
+    }
+
+    /* Für kleine Bildschirme */
+    @media (max-width: 768px) {
+        footer .list-unstyled {
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+    }
 </style>
