@@ -1,33 +1,53 @@
 ---
 import ServicePage from "@components/ServicePage.astro";
-import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
-import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
-import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
-import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+import BaggerarbeitenKampfDesktop from "@images/BaggerarbeitenKampf16zu9.JPG";
+import BaggerarbeitenMoritzImBaggerDesktop from "@images/BAggerArbeitenMoritzImBagger16zu9.JPG";
+import BaggerarbeitenMoritzImBaggerMobile from "@images/BAggerArbeitenMoritzImBagger9zu16.PNG";
+import BaggerarbeitenPhilippKunzeDesktop from "@images/BAggerarbeitenPhilippKunze16zu9.JPG";
+import BaggerarbeitenPhilippKunzeMobile from "@images/BAggerarbeitenPhilippKunze9zu16.JPG";
+import BaggerarbeitenPullupDesktop from "@assets/videos/BaggerarbeitenPullup16zu9.mp4";
+import BaggerarbeitenSandShippenMobile from "@assets/videos/BaggerArbeitenSandShippen9zu16(2).mp4";
 ---
 
 <ServicePage
     title="Baggerarbeiten"
-    description="Wir führen Erdarbeiten, Grabungen und Landschaftsgestaltung mit modernen Maschinen und erfahrenen Bedienern aus. Präzise und zuverlässig schaffen wir die Grundlage für Ihre Bauprojekte."
+    description="Wir fÃƒÂ¼hren Erdarbeiten, Grabungen und Landschaftsgestaltung mit modernen Maschinen und erfahrenen Bedienern aus. PrÃƒÂ¤zise und zuverlÃƒÂ¤ssig schaffen wir die Grundlage fÃƒÂ¼r Ihre Bauprojekte."
     images={[
         {
-            src: MoritzSchaufeln.src,
-            hdSrc: MoritzSchaufelnHD.src,
-            alt: "Moritz am Schaufeln",
+            desktopSrc: BaggerarbeitenKampfDesktop.src,
+            alt: "Baggerarbeiten im Einsatz",
             textTitle: "Starke Grundlage",
-            text: "Baggerarbeiten schaffen die Grundlage für saubere Abläufe auf der Baustelle, vom Aushub bis zur Vorbereitung weiterer Gewerke.",
+            text: "Baggerarbeiten schaffen die Grundlage fÃƒÂ¼r saubere AblÃƒÂ¤ufe auf der Baustelle, vom Aushub bis zur Vorbereitung weiterer Gewerke.",
         },
         {
-            src: MoritzBagger.src,
-            alt: "Moritz im Auto",
-            textTitle: "Präzise Erdbewegung",
-            text: "Mit Erfahrung und dem passenden Gerät werden Erdbewegungen präzise, effizient und abgestimmt auf das jeweilige Projekt ausgeführt.",
+            desktopSrc: BaggerarbeitenMoritzImBaggerDesktop.src,
+            mobileSrc: BaggerarbeitenMoritzImBaggerMobile.src,
+            alt: "Moritz im Bagger",
+            textTitle: "MaschinengefÃ¼hl",
+            text: "Beim Arbeiten mit dem Bagger kommt es auf Erfahrung, Kontrolle und ein gutes GefÃ¼hl fÃ¼r Maschine und Material an.",
         },
         {
-            src: MoritzArbeiten.src,
-            alt: "Plakat",
-            textTitle: "Zuverlässige Umsetzung",
-            text: "Ob Geländeprofil, Freilegung oder Vorbereitung für Pflaster- und Natursteinarbeiten: Die Umsetzung bleibt strukturiert und zuverlässig.",
+            desktopSrc: BaggerarbeitenPhilippKunzeDesktop.src,
+            mobileSrc: BaggerarbeitenPhilippKunzeMobile.src,
+            alt: "Baggerarbeiten Philipp Kunze",
+            textTitle: "Arbeit vor Ort",
+            text: "Die neuen Aufnahmen zeigen weitere EindrÃ¼cke direkt von der Baustelle und machen den Ablauf der Arbeiten sichtbar.",
+        },
+        {
+            desktopVideoSrc: BaggerarbeitenPullupDesktop,
+            desktopPosterSrc: BaggerarbeitenKampfDesktop.src,
+            videoType: "video/mp4",
+            alt: "Baggerarbeiten Pullup",
+            textTitle: "Maschinen im Einsatz",
+            text: "Das Pullup-Video zeigt den Einsatz der Maschine direkt bei der Arbeit und gibt einen kurzen Eindruck vom Ablauf auf der Baustelle.",
+        },
+        {
+            mobileVideoSrc: BaggerarbeitenSandShippenMobile,
+            mobilePosterSrc: BaggerarbeitenKampfDesktop.src,
+            videoType: "video/mp4",
+            alt: "Baggerarbeiten Sand schippen",
+            textTitle: "PrÃƒÂ¤zise Erdbewegung",
+            text: "Auch beim Verladen und Bewegen von Material zeigt sich eine saubere, kontrollierte und effiziente Arbeitsweise auf der Baustelle.",
         },
     ]}
 />

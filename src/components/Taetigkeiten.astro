@@ -1,7 +1,7 @@
 ---
-import Bild1 from "@images/1zu1FensterEingemauert.jpg";
-import Bild2 from "@images/1zu1Pool.jpg";
-import Bild3 from "@images/1zu1MoritzImBagger.jpg";
+import Bild1 from "@images/StartseiteFensterEingemauert1zu1.jpg";
+import Bild2 from "@images/Startseite1zu1Pool.jpg";
+import Bild3 from "@images/Startseite1zu1MoritzImBagger.jpg";
 ---
 
 <h2>Dienstleistungen</h2>
@@ -34,7 +34,7 @@ import Bild3 from "@images/1zu1MoritzImBagger.jpg";
                 </div>
             </a>
         </div>
-        <div class="col-xxl-4 col-md-6 col-sm-12">
+        <div class="col-xxl-4 col-md-6 offset-md-3 offset-xxl-0 col-sm-12">
             <a href="/baggerarbeiten" class="text-decoration-none">
                 <div class="image-container">
                     <img src={Bild3.src} alt="Image" class="image" />
@@ -51,12 +51,22 @@ import Bild3 from "@images/1zu1MoritzImBagger.jpg";
 </div>
 
 <style>
+    a.text-decoration-none {
+        display: block;
+    }
+
     .image-container {
         position: relative;
         padding: 10px;
+        margin: 0.5rem 0;
         width: 100%;
-        height: 300px; /* Set a fixed height for the images */
-        overflow: hidden; /* Prevents the image from overflowing */
+        height: 300px;
+        overflow: hidden;
+        border-radius: 18px;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            outline-color 0.2s ease;
     }
 
     .image {
@@ -66,9 +76,6 @@ import Bild3 from "@images/1zu1MoritzImBagger.jpg";
         transition: transform 0.3s ease-in-out;
     }
 
-    .image-container:hover .image {
-        transform: scale(1.1);
-    }
     .overlay-box-heading {
         position: absolute;
         top: 0;
@@ -81,10 +88,6 @@ import Bild3 from "@images/1zu1MoritzImBagger.jpg";
         text-align: center;
         align-items: center;
         opacity: 1;
-    }
-
-    .image-container:hover .overlay-box-heading {
-        display: none;
     }
 
     .overlay-box {
@@ -102,7 +105,41 @@ import Bild3 from "@images/1zu1MoritzImBagger.jpg";
         transition: opacity 0.3s ease-in-out;
     }
 
-    .image-container:hover .overlay-box {
-        opacity: 1;
+    @media (max-width: 1199px) {
+        .image-container {
+            cursor: pointer;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+            outline: 2px solid rgba(var(--bs-success-rgb), 0.2);
+            outline-offset: -2px;
+        }
+
+        a.text-decoration-none:active .image-container,
+        a.text-decoration-none:focus-visible .image-container {
+            transform: scale(0.98);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            outline-color: rgba(var(--bs-success-rgb), 0.55);
+        }
+
+        .overlay-box-heading {
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.08)
+            );
+        }
+    }
+
+    @media (min-width: 576px) {
+        .image-container:hover .image {
+            transform: scale(1.1);
+        }
+
+        .image-container:hover .overlay-box {
+            opacity: 1;
+        }
+
+        .image-container:hover .overlay-box-heading {
+            display: none;
+        }
     }
 </style>

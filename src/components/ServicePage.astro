@@ -9,9 +9,18 @@ export interface Props {
     title: string;
     description: string;
     images: Array<{
-        src: string;
         alt: string;
+        src?: string;
         hdSrc?: string;
+        desktopSrc?: string;
+        mobileSrc?: string;
+        videoSrc?: string;
+        desktopVideoSrc?: string;
+        mobileVideoSrc?: string;
+        videoType?: string;
+        posterSrc?: string;
+        desktopPosterSrc?: string;
+        mobilePosterSrc?: string;
         textTitle?: string;
         text?: string;
     }>;

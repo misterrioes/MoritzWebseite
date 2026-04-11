@@ -8,5 +8,5 @@ export const contactDetails = {
     phone: "+4915150055155",
     email: "moritz.zimmer-gartengestaltung@magenta.de",
     mapsEmbedUrl:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2581.6220241598053!2d7.744120176927023!3d49.68025814251888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47960387ccc7e787%3A0xfc603a5b092e247f!2sLindenstra%C3%9Fe%207%2C%2067822%20Finkenbach-Gersweiler!5e0!3m2!1sde!2sde!4v1743080052454!5m2!1sde!2sde",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2581.6222084498145!2d7.744120176721208!3d49.680254671455444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479603f032160c99%3A0x53044e6a55a78cc9!2sMoritz%20Zimmer%20Gartengestaltung!5e0!3m2!1sde!2sch!4v1775867948043!5m2!1sde!2sch",
 } as const;

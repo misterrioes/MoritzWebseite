@@ -1,9 +1,10 @@
 ---
 import ServicePage from "@components/ServicePage.astro";
-import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
-import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
-import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
-import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+import PflasterAufgangDesktop from "@images/PflasterarbeitenAufgang16zu9.jpg";
+import PflasterAufgangMobile from "@images/PflasterarbeitenAufgang9zu16.jpg";
+import PflasterUntergrundDesktop from "@images/PflasterarbeitenUntergrund16zu9.jpg";
+import PflasterUntergrundMobile from "@images/PflasterarbeitenUntergrund9zu16.jpg";
+import PflasterVerandaMobile from "@images/PflasterArbeitenVeranda9zu16.jpg";
 ---
 
 <ServicePage
@@ -11,21 +12,22 @@ import MoritzArbeiten from "@images/16zu9Plakat.jpg";
     description="Unsere Pflasterarbeiten umfassen Einfahrten, Terrassen und Wege. Wir verbinden Design mit Funktionalität und legen langlebige, optisch ansprechende Pflasterflächen nach Ihren Wünschen an."
     images={[
         {
-            src: MoritzSchaufeln.src,
-            hdSrc: MoritzSchaufelnHD.src,
-            alt: "Moritz am Schaufeln",
+            desktopSrc: PflasterAufgangDesktop.src,
+            mobileSrc: PflasterAufgangMobile.src,
+            alt: "Pflasterarbeiten Aufgang",
             textTitle: "Pflaster für Wege und Flächen",
             text: "Von Einfahrt bis Terrasse entstehen belastbare Pflasterflächen, die sauber verlegt sind und optisch zum Gesamtbild Ihres Außenbereichs passen.",
         },
         {
-            src: MoritzBagger.src,
-            alt: "Moritz im Auto",
+            desktopSrc: PflasterUntergrundDesktop.src,
+            mobileSrc: PflasterUntergrundMobile.src,
+            alt: "Pflasterarbeiten Untergrund",
             textTitle: "Planung mit Funktion",
             text: "Bei der Planung achten wir auf Entwässerung, Nutzung und ein stimmiges Format der Steine, damit Funktion und Gestaltung zusammenpassen.",
         },
         {
-            src: MoritzArbeiten.src,
-            alt: "Plakat",
+            mobileSrc: PflasterVerandaMobile.src,
+            alt: "Pflasterarbeiten Veranda",
             textTitle: "Individuelle Ausführung",
             text: "Ob Wege, Höfe oder Sitzplätze: Jede Fläche wird individuell abgestimmt und mit Blick auf Langlebigkeit umgesetzt.",
         },

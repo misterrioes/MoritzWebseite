@@ -1,9 +1,12 @@
 ---
 import ServicePage from "@components/ServicePage.astro";
-import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
-import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
-import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
-import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+import NatursteinBlumeDesktop from "@images/NatursteinarbeitenBlume16zu9.jpg";
+import NatursteinBlumeMobile from "@images/NatursteinarbeitenBlume9zu16.jpg";
+import NatursteinMauerDesktop from "@images/Natursteinarbeitenckmauer16zu9.jpg";
+import NatursteinBrunnenMobile from "@images/NatursteinarbeitenBrunnen9zu16.jpg";
+import NatursteinJapanDesktop from "@images/NatursteinarbeitenJapan16zu9.jpg";
+import NatursteinJapanMobile from "@images/NatursteinarbeitenJapan9zu16.jpg";
+import NatursteinHeimMobile from "@images/NatursteinarbeitenHeim9zu16.jpg";
 ---
 
 <ServicePage
@@ -11,23 +14,31 @@ import MoritzArbeiten from "@images/16zu9Plakat.jpg";
     description="Wir gestalten Natursteinmauern, Terrassen und Gartenbereiche mit hochwertigen Materialien und handwerklicher Präzision. Ob moderne Flächen oder rustikale Natursteinwände - wir setzen Ihre Ideen zuverlässig um."
     images={[
         {
-            src: MoritzSchaufeln.src,
-            hdSrc: MoritzSchaufelnHD.src,
-            alt: "Moritz am Schaufeln",
+            desktopSrc: NatursteinBlumeDesktop.src,
+            mobileSrc: NatursteinBlumeMobile.src,
+            alt: "Natursteinarbeiten Blume",
             textTitle: "Naturstein mit Charakter",
             text: "Naturstein bringt Charakter in Gärten und Außenanlagen. Jede Lösung wird passend zur Umgebung und zum gewünschten Stil umgesetzt.",
         },
         {
-            src: MoritzBagger.src,
-            alt: "Moritz im Auto",
+            desktopSrc: NatursteinMauerDesktop.src,
+            mobileSrc: NatursteinBrunnenMobile.src,
+            alt: "Natursteinarbeiten Brunnen und Mauer",
             textTitle: "Saubere Handwerksarbeit",
             text: "Von Mauern über Einfassungen bis zu Terrassen entstehen handwerklich saubere Arbeiten mit einem hochwertigen, natürlichen Eindruck.",
         },
         {
-            src: MoritzArbeiten.src,
-            alt: "Plakat",
+            desktopSrc: NatursteinJapanDesktop.src,
+            mobileSrc: NatursteinJapanMobile.src,
+            alt: "Natursteinarbeiten Japan",
             textTitle: "Langlebige Gestaltung",
             text: "Im Fokus stehen langlebige Materialien, präzise Verarbeitung und ein Ergebnis, das sich dauerhaft in Ihren Außenbereich einfügt.",
+        },
+        {
+            mobileSrc: NatursteinHeimMobile.src,
+            alt: "Natursteinarbeiten Heim",
+            textTitle: "Individuelle Details",
+            text: "Auch auf kleineren mobilen Ansichten bleiben zusätzliche Einblicke in verschiedene Natursteinprojekte sichtbar.",
         },
     ]}
 />

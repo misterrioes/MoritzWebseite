@@ -3,62 +3,198 @@ export interface Props {
     title: string;
     description: string;
     images: Array<{
-        src: string;
         alt: string;
+        src?: string;
         hdSrc?: string;
+        desktopSrc?: string;
+        mobileSrc?: string;
+        videoSrc?: string;
+        desktopVideoSrc?: string;
+        mobileVideoSrc?: string;
+        videoType?: string;
+        posterSrc?: string;
+        desktopPosterSrc?: string;
+        mobilePosterSrc?: string;
         textTitle?: string;
         text?: string;
     }>;
 }
 
+type RenderSlide = {
+    alt: string;
+    kind: "image" | "video";
+    src: string;
+    videoType?: string;
+    posterSrc?: string;
+    textTitle?: string;
+    text?: string;
+};
+
 const { title, description, images } = Astro.props;
-const hasSlideTexts = images.some((image) => image.text);
+
+const carouselSlug = title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+const desktopCarouselId = `${carouselSlug}-desktop-carousel`;
+const mobileCarouselId = `${carouselSlug}-mobile-carousel`;
+
+const desktopSlides = images.flatMap((image) => {
+    const desktopVideoSrc = image.desktopVideoSrc ?? image.videoSrc;
+    const desktopSrc = image.desktopSrc ?? image.hdSrc ?? image.src;
+
+    if (desktopVideoSrc) {
+        return [
+            {
+                alt: image.alt,
+                kind: "video" as const,
+                src: desktopVideoSrc,
+                videoType: image.videoType ?? "video/mp4",
+                posterSrc:
+                    image.desktopPosterSrc ??
+                    image.posterSrc ??
+                    desktopSrc ??
+                    image.mobileSrc,
+                textTitle: image.textTitle,
+                text: image.text,
+            },
+        ];
+    }
+
+    if (desktopSrc) {
+        return [
+            {
+                alt: image.alt,
+                kind: "image" as const,
+                src: desktopSrc,
+                textTitle: image.textTitle,
+                text: image.text,
+            },
+        ];
+    }
+
+    return [];
+});
+
+const mobileSlides = images.flatMap((image) => {
+    const mobileVideoSrc = image.mobileVideoSrc ?? image.videoSrc;
+    const mobileSrc = image.mobileSrc ?? image.src;
+
+    if (mobileVideoSrc) {
+        return [
+            {
+                alt: image.alt,
+                kind: "video" as const,
+                src: mobileVideoSrc,
+                videoType: image.videoType ?? "video/mp4",
+                posterSrc:
+                    image.mobilePosterSrc ??
+                    image.posterSrc ??
+                    mobileSrc ??
+                    image.desktopSrc ??
+                    image.hdSrc,
+                textTitle: image.textTitle,
+                text: image.text,
+            },
+        ];
+    }
+
+    if (mobileSrc) {
+        return [
+            {
+                alt: image.alt,
+                kind: "image" as const,
+                src: mobileSrc,
+                textTitle: image.textTitle,
+                text: image.text,
+            },
+        ];
+    }
+
+    return [];
+});
+
+const hasDesktopSlideTexts = desktopSlides.some((slide) => slide.text);
+const hasMobileSlideTexts = mobileSlides.some((slide) => slide.text);
 ---
 
-<div class="carousel-block">
-    <div
-        id="carouselExampleIndicators"
-        class="carousel slide carousel-fade"
-        data-bs-ride="carousel"
-    >
-        <div class="carousel-indicators">
-            {
-                images.map((image, index) => (
-                    <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to={index}
-                        class={index === 0 ? "active" : ""}
-                        aria-current={index === 0 ? "true" : ""}
-                        aria-label={image.alt}
-                    />
-                ))
-            }
-        </div>
-
-        <div class="carousel-inner">
-            {
-                images.map((image, index) => (
-                    <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
-                        <picture>
-                            {image.hdSrc && (
-                                <source
-                                    media="(min-width: 900px)"
-                                    srcset={image.hdSrc}
-                                />
-                            )}
-                            <img
-                                src={image.src}
-                                class="d-block w-100"
-                                alt={image.alt}
-                                style="object-fit: cover;"
+{
+    desktopSlides.length > 0 && (
+        <div class="carousel-block d-none d-md-block" data-carousel-root>
+            <div
+                id={desktopCarouselId}
+                class="carousel slide carousel-fade"
+                data-bs-ride="carousel"
+            >
+                <div class="carousel-indicators">
+                    {
+                        desktopSlides.map((slide, index) => (
+                            <button
+                                type="button"
+                                data-bs-target={`#${desktopCarouselId}`}
+                                data-bs-slide-to={index}
+                                class={index === 0 ? "active" : ""}
+                                aria-current={index === 0 ? "true" : undefined}
+                                aria-label={slide.alt}
                             />
-                        </picture>
-                    </div>
-                ))
-            }
+                        ))
+                    }
+                </div>
 
-            <div class="overlay-box">
+                <div class="carousel-inner">
+                    {
+                        desktopSlides.map((slide, index) => (
+                            <div
+                                class={`carousel-item ${index === 0 ? "active" : ""}`}
+                            >
+                                {
+                                    slide.kind === "video" ? (
+                                        <video
+                                            class="d-block w-100 carousel-media"
+                                            autoplay
+                                            muted
+                                            loop
+                                            playsinline
+                                            controls
+                                            poster={slide.posterSrc}
+                                            aria-label={slide.alt}
+                                        >
+                                            <source
+                                                src={slide.src}
+                                                type={slide.videoType}
+                                            />
+                                            {slide.alt}
+                                        </video>
+                                    ) : (
+                                        <img
+                                            src={slide.src}
+                                            class="d-block w-100 carousel-media"
+                                            alt={slide.alt}
+                                        />
+                                    )
+                                }
+                            </div>
+                        ))
+                    }
+
+                    <div class="overlay-box overlay-box-desktop">
+                        <h3>{title}</h3>
+                        <p>{description}</p>
+                        <button
+                            class="btn btn-success btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#contactModal"
+                        >
+                            Kontaktieren
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overlay-box overlay-box-mobile overlay-box-mobile-desktop">
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <button
@@ -69,27 +205,117 @@ const hasSlideTexts = images.some((image) => image.text);
                     Kontaktieren
                 </button>
             </div>
-        </div>
-    </div>
 
-    {
-        hasSlideTexts && (
-            <div class="slide-text-wrapper container">
-                {images.map((image, index) => (
-                    <div
-                        class={`info-card slide-text-card ${index === 0 ? "active" : ""}`}
-                        data-slide-text={index}
-                    >
-                        <h3 class="slide-text-title">
-                            {image.textTitle ?? image.alt}
-                        </h3>
-                        <p>{image.text}</p>
-                    </div>
-                ))}
+            {hasDesktopSlideTexts && (
+                <div class="slide-text-wrapper container">
+                    {desktopSlides.map((slide, index) => (
+                        <div
+                            class={`info-card slide-text-card ${index === 0 ? "active" : ""}`}
+                            data-slide-text={index}
+                        >
+                            <h3 class="slide-text-title">
+                                {slide.textTitle ?? slide.alt}
+                            </h3>
+                            <p>{slide.text}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    )
+}
+
+{
+    mobileSlides.length > 0 && (
+        <div class="carousel-block d-md-none" data-carousel-root>
+            <div
+                id={mobileCarouselId}
+                class="carousel slide carousel-fade"
+                data-bs-ride="carousel"
+            >
+                <div class="carousel-indicators">
+                    {
+                        mobileSlides.map((slide, index) => (
+                            <button
+                                type="button"
+                                data-bs-target={`#${mobileCarouselId}`}
+                                data-bs-slide-to={index}
+                                class={index === 0 ? "active" : ""}
+                                aria-current={index === 0 ? "true" : undefined}
+                                aria-label={slide.alt}
+                            />
+                        ))
+                    }
+                </div>
+
+                <div class="carousel-inner">
+                    {
+                        mobileSlides.map((slide, index) => (
+                            <div
+                                class={`carousel-item ${index === 0 ? "active" : ""}`}
+                            >
+                                {
+                                    slide.kind === "video" ? (
+                                        <video
+                                            class="d-block w-100 carousel-media"
+                                            autoplay
+                                            muted
+                                            loop
+                                            playsinline
+                                            controls
+                                            poster={slide.posterSrc}
+                                            aria-label={slide.alt}
+                                        >
+                                            <source
+                                                src={slide.src}
+                                                type={slide.videoType}
+                                            />
+                                            {slide.alt}
+                                        </video>
+                                    ) : (
+                                        <img
+                                            src={slide.src}
+                                            class="d-block w-100 carousel-media"
+                                            alt={slide.alt}
+                                        />
+                                    )
+                                }
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
-        )
-    }
-</div>
+
+            <div class="overlay-box overlay-box-mobile">
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <button
+                    class="btn btn-success btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#contactModal"
+                >
+                    Kontaktieren
+                </button>
+            </div>
+
+            {hasMobileSlideTexts && (
+                <div class="slide-text-wrapper container">
+                    {mobileSlides.map((slide, index) => (
+                        <div
+                            class={`info-card slide-text-card ${index === 0 ? "active" : ""}`}
+                            data-slide-text={index}
+                        >
+                            <h3 class="slide-text-title">
+                                {slide.textTitle ?? slide.alt}
+                            </h3>
+                            <p>{slide.text}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    )
+}
 
 <style>
     h3 {
@@ -106,20 +332,35 @@ const hasSlideTexts = images.some((image) => image.text);
         position: relative;
     }
 
+    .carousel-media {
+        object-fit: cover;
+    }
+
     .overlay-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        color: var(--bs-success);
+    }
+
+    .overlay-box-desktop {
         position: absolute;
         z-index: 1;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        background-color: rgba(var(--bs-secondary-rgb), 0.8);
-        color: var(--bs-success);
+        background-color: rgba(var(--bs-secondary-rgb), 0.6);
+    }
+
+    .overlay-box-mobile {
+        display: none;
+        margin-top: 1rem;
+        padding: 1.5rem 1.25rem;
+        background-color: rgba(var(--bs-secondary-rgb), 0.9);
+        border-radius: 1rem;
     }
 
     .slide-text-wrapper {
@@ -155,9 +396,12 @@ const hasSlideTexts = images.some((image) => image.text);
     }
 
     @media (max-width: 992px) {
-        .overlay-box {
-            width: 80%;
-            left: 10%;
+        .overlay-box-desktop {
+            display: none;
+        }
+
+        .overlay-box-mobile {
+            display: flex;
         }
 
         .overlay-box h3 {
@@ -193,44 +437,67 @@ const hasSlideTexts = images.some((image) => image.text);
     }
 
     @media (min-width: 993px) and (max-width: 1199px) {
-        .overlay-box {
+        .overlay-box-desktop {
             width: 50%;
             left: 10%;
+        }
+
+        .overlay-box-mobile-desktop {
+            display: none;
         }
     }
 
     @media (min-width: 1200px) {
-        .overlay-box {
+        .overlay-box-desktop {
             width: 30%;
             left: 10%;
+        }
+
+        .overlay-box-mobile-desktop {
+            display: none;
         }
     }
 </style>
 
-{
-    hasSlideTexts && (
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const carousel = document.querySelector(
-                    "#carouselExampleIndicators",
-                );
-                const slideTexts = document.querySelectorAll("[data-slide-text]");
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const carouselRoots = document.querySelectorAll("[data-carousel-root]");
 
-                if (!carousel || slideTexts.length === 0) return;
+        carouselRoots.forEach((root) => {
+            const carousel = root.querySelector(".carousel");
+            const slideTexts = root.querySelectorAll("[data-slide-text]");
+            const carouselVideos = root.querySelectorAll("video");
 
-                const setActiveText = (index) => {
-                    slideTexts.forEach((slideText, currentIndex) => {
-                        slideText.classList.toggle(
-                            "active",
-                            currentIndex === index,
-                        );
-                    });
-                };
+            if (!carousel) return;
 
-                carousel.addEventListener("slid.bs.carousel", (event) => {
-                    setActiveText(event.to);
+            const setActiveText = (index) => {
+                slideTexts.forEach((slideText, currentIndex) => {
+                    slideText.classList.toggle("active", currentIndex === index);
                 });
+            };
+
+            const resetAndPlayActiveVideo = () => {
+                carouselVideos.forEach((video) => {
+                    const carouselItem = video.closest(".carousel-item");
+                    const isActive = carouselItem?.classList.contains("active");
+
+                    if (isActive) {
+                        video.currentTime = 0;
+                        void video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                });
+            };
+
+            setActiveText(0);
+            resetAndPlayActiveVideo();
+
+            carousel.addEventListener("slid.bs.carousel", (event) => {
+                setActiveText(event.to);
+                resetAndPlayActiveVideo();
             });
-        </script>
-    )
-}
+        });
+    });
+</script>

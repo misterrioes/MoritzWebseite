@@ -3,10 +3,12 @@ import Baselayout from "../layouts/Baselayout.astro";
 import BilderKarussel from "@components/BilderKarusselText.astro";
 import KontaktModal from "@components/KontaktModal.astro";
 import KontaktArten from "@components/StickyContact.astro";
-import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
-import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
-import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
-import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+import UeberMichSchaufelnDesktop from "@images/uebermichMortizAmSchaufeln16zu9.jpg";
+import UeberMichSchaufelnMobile from "@images/uebermichMoritzAmSchaufeln9zu16 .JPG";
+import UeberMichBaggerDesktop from "@images/uebermichMoritzAufBagger16zu9..JPG";
+import UeberMichBaggerMobile from "@images/uebermichMoritzAufBagger9zu16..JPG";
+import UeberMichAutoDesktop from "@images/uebermichMoritzImAuto16zu9.jpg";
+import UeberMichAutoMobile from "@images/uebermichMoritzImAuto9zu16.JPG";
 ---
 
 <Baselayout>
@@ -15,12 +17,20 @@ import MoritzArbeiten from "@images/16zu9Plakat.jpg";
         description="Ich begleite Projekte rund um Garten- und Maurerarbeiten mit einem klaren Blick für saubere Ausführung, langlebige Ergebnisse und eine direkte, persönliche Zusammenarbeit."
         images={[
             {
-                src: MoritzSchaufeln.src,
-                hdSrc: MoritzSchaufelnHD.src,
+                desktopSrc: UeberMichSchaufelnDesktop.src,
+                mobileSrc: UeberMichSchaufelnMobile.src,
                 alt: "Moritz bei der Arbeit",
             },
-            { src: MoritzBagger.src, alt: "Moritz im Fahrzeug" },
-            { src: MoritzArbeiten.src, alt: "Arbeitsbeispiel" },
+            {
+                desktopSrc: UeberMichBaggerDesktop.src,
+                mobileSrc: UeberMichBaggerMobile.src,
+                alt: "Moritz auf dem Bagger",
+            },
+            {
+                desktopSrc: UeberMichAutoDesktop.src,
+                mobileSrc: UeberMichAutoMobile.src,
+                alt: "Moritz im Fahrzeug",
+            },
         ]}
     />
 

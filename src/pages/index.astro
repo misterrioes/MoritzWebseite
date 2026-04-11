@@ -5,10 +5,11 @@ import KontaktModal from "@components/KontaktModal.astro";
 import Taetigkeiten from "@components/Taetigkeiten.astro";
 import KontaktArten from "@components/StickyContact.astro";
 import Standort from "@components/Standort.astro";
-import MoritzSchaufelnHD from "@images/16zu9HDMoritzAmSchaufeln.jpg";
-import MoritzSchaufeln from "@images/16zu9MoritzAmSchaufeln.jpg";
-import MoritzBagger from "@images/16zu9MoritzImAuto.jpg";
-import MoritzArbeiten from "@images/16zu9Plakat.jpg";
+import StartseiteSchaufelnDesktop from "@images/Startseite16zu9MoritzAmSchaufeln.jpg";
+import StartseiteSchaufelnMobile from "@images/StartseiteMoritzAmSchaufeln9zu16.jpg";
+import StartseiteAutoDesktop from "@images/Startseite16zu9MoritzImAuto.jpg";
+import StartseiteAutoMobile from "@images/StartseiteMoritzImAuto9zu16.jpg";
+import StartseitePlakatDesktop from "@images/Startseite16zu9Plakat.jpg";
 ---
 
 <Baselayout>
@@ -17,12 +18,19 @@ import MoritzArbeiten from "@images/16zu9Plakat.jpg";
         description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
         images={[
             {
-                src: MoritzSchaufeln.src,
-                hdSrc: MoritzSchaufelnHD.src,
+                desktopSrc: StartseiteSchaufelnDesktop.src,
+                mobileSrc: StartseiteSchaufelnMobile.src,
                 alt: "Moritz am Schaufeln",
             },
-            { src: MoritzBagger.src, alt: "Moritz im Auto" },
-            { src: MoritzArbeiten.src, alt: "Plakat" },
+            {
+                desktopSrc: StartseiteAutoDesktop.src,
+                mobileSrc: StartseiteAutoMobile.src,
+                alt: "Moritz im Auto",
+            },
+            {
+                desktopSrc: StartseitePlakatDesktop.src,
+                alt: "Plakat",
+            },
         ]}
     />
     <hr />
