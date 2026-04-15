@@ -184,7 +184,7 @@ const hasMobileSlideTexts = mobileSlides.some((slide) => slide.text);
                         <h3>{title}</h3>
                         <p>{description}</p>
                         <button
-                            class="btn btn-success btn-lg"
+                            class="btn btn-secondary btn-lg overlay-box-button"
                             data-bs-toggle="modal"
                             data-bs-target="#contactModal"
                         >
@@ -198,7 +198,7 @@ const hasMobileSlideTexts = mobileSlides.some((slide) => slide.text);
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <button
-                    class="btn btn-success btn-lg"
+                    class="btn btn-secondary btn-lg overlay-box-button"
                     data-bs-toggle="modal"
                     data-bs-target="#contactModal"
                 >
@@ -290,7 +290,7 @@ const hasMobileSlideTexts = mobileSlides.some((slide) => slide.text);
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <button
-                    class="btn btn-success btn-lg"
+                    class="btn btn-secondary btn-lg overlay-box-button"
                     data-bs-toggle="modal"
                     data-bs-target="#contactModal"
                 >
@@ -324,7 +324,7 @@ const hasMobileSlideTexts = mobileSlides.some((slide) => slide.text);
     }
 
     .overlay-box p {
-        color: var(--bs-heading-success);
+        color: var(--bs-secondary);
         font-weight: bold;
     }
 
@@ -342,7 +342,10 @@ const hasMobileSlideTexts = mobileSlides.some((slide) => slide.text);
         justify-content: center;
         text-align: center;
         align-items: center;
-        color: var(--bs-success);
+        gap: 1rem;
+        padding: 2rem;
+        color: var(--bs-secondary);
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
     }
 
     .overlay-box-desktop {
@@ -352,15 +355,66 @@ const hasMobileSlideTexts = mobileSlides.some((slide) => slide.text);
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(var(--bs-secondary-rgb), 0.6);
+        background:
+            linear-gradient(
+                135deg,
+                rgba(var(--bs-success-rgb), 0.82),
+                rgba(var(--bs-success-rgb), 0.56)
+            );
+        border: 1px solid rgba(var(--bs-secondary-rgb), 0.32);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(8px);
     }
 
     .overlay-box-mobile {
         display: none;
         margin-top: 1rem;
-        padding: 1.5rem 1.25rem;
-        background-color: rgba(var(--bs-secondary-rgb), 0.9);
+        padding: 1.75rem 1.5rem;
+        background:
+            linear-gradient(
+                135deg,
+                rgba(var(--bs-success-rgb), 0.82),
+                rgba(var(--bs-success-rgb), 0.56)
+            );
+        border: 1px solid rgba(var(--bs-secondary-rgb), 0.32);
         border-radius: 1rem;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(8px);
+    }
+
+    .overlay-box h3 {
+        margin-bottom: 0;
+        max-width: 18ch;
+        color: var(--bs-secondary);
+    }
+
+    .overlay-box p {
+        margin-bottom: 0;
+        max-width: 34ch;
+    }
+
+    .overlay-box-button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 999px;
+        background-color: var(--bs-secondary);
+        color: var(--bs-success);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            background-color 0.2s ease,
+            color 0.2s ease;
+    }
+
+    .overlay-box-button:hover,
+    .overlay-box-button:focus-visible {
+        background-color: rgba(var(--bs-primary-rgb), 0.96);
+        color: var(--bs-success);
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+        transform: translateY(-2px);
     }
 
     .slide-text-wrapper {

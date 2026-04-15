@@ -88,10 +88,10 @@
     --bs-gray-900: #212529;
     --bs-primary: #d9e7c8;
     --bs-secondary: #f0c69c;
-    --bs-success: #246725;
+    --bs-success: #154216;
     --bs-primary-rgb: 217, 231, 200;
     --bs-secondary-rgb: 240, 198, 156;
-    --bs-success-rgb: 36, 103, 37;
+    --bs-success-rgb: 21, 66, 22;
     --bs-primary-text-emphasis: rgb(5.2, 44, 101.2);
     --bs-secondary-text-emphasis: rgb(43.2, 46.8, 50);
     --bs-success-text-emphasis: rgb(10, 54, 33.6);
@@ -602,13 +602,16 @@ legend {
     padding: 0;
     margin-bottom: 0.5rem;
     font-size: calc(1.275rem + 0.3vw);
-    line-height: inherit;
 }
 
 @media (min-width: 1200px) {
     legend {
         font-size: 1.5rem;
     }
+}
+
+legend {
+    line-height: inherit;
 }
 
 legend+* {
@@ -683,8 +686,6 @@ progress {
 
 .display-1 {
     font-size: calc(1.625rem + 4.5vw);
-    font-weight: 300;
-    line-height: 1.2;
 }
 
 @media (min-width: 1200px) {
@@ -693,10 +694,13 @@ progress {
     }
 }
 
-.display-2 {
-    font-size: calc(1.575rem + 3.9vw);
+.display-1 {
     font-weight: 300;
     line-height: 1.2;
+}
+
+.display-2 {
+    font-size: calc(1.575rem + 3.9vw);
 }
 
 @media (min-width: 1200px) {
@@ -705,10 +709,13 @@ progress {
     }
 }
 
-.display-3 {
-    font-size: calc(1.525rem + 3.3vw);
+.display-2 {
     font-weight: 300;
     line-height: 1.2;
+}
+
+.display-3 {
+    font-size: calc(1.525rem + 3.3vw);
 }
 
 @media (min-width: 1200px) {
@@ -717,10 +724,13 @@ progress {
     }
 }
 
-.display-4 {
-    font-size: calc(1.475rem + 2.7vw);
+.display-3 {
     font-weight: 300;
     line-height: 1.2;
+}
+
+.display-4 {
+    font-size: calc(1.475rem + 2.7vw);
 }
 
 @media (min-width: 1200px) {
@@ -729,10 +739,13 @@ progress {
     }
 }
 
-.display-5 {
-    font-size: calc(1.425rem + 2.1vw);
+.display-4 {
     font-weight: 300;
     line-height: 1.2;
+}
+
+.display-5 {
+    font-size: calc(1.425rem + 2.1vw);
 }
 
 @media (min-width: 1200px) {
@@ -741,16 +754,24 @@ progress {
     }
 }
 
-.display-6 {
-    font-size: calc(1.375rem + 1.5vw);
+.display-5 {
     font-weight: 300;
     line-height: 1.2;
+}
+
+.display-6 {
+    font-size: calc(1.375rem + 1.5vw);
 }
 
 @media (min-width: 1200px) {
     .display-6 {
         font-size: 2.5rem;
     }
+}
+
+.display-6 {
+    font-weight: 300;
+    line-height: 1.2;
 }
 
 .list-unstyled {
@@ -3506,19 +3527,19 @@ fieldset:disabled .btn {
 
 .btn-success {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #246725;
-    --bs-btn-border-color: #246725;
+    --bs-btn-bg: #154216;
+    --bs-btn-border-color: #154216;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: rgb(30.6, 87.55, 31.45);
-    --bs-btn-hover-border-color: rgb(28.8, 82.4, 29.6);
-    --bs-btn-focus-shadow-rgb: 69, 126, 70;
+    --bs-btn-hover-bg: rgb(17.85, 56.1, 18.7);
+    --bs-btn-hover-border-color: rgb(16.8, 52.8, 17.6);
+    --bs-btn-focus-shadow-rgb: 56, 94, 57;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: rgb(28.8, 82.4, 29.6);
-    --bs-btn-active-border-color: rgb(27, 77.25, 27.75);
+    --bs-btn-active-bg: rgb(16.8, 52.8, 17.6);
+    --bs-btn-active-border-color: rgb(15.75, 49.5, 16.5);
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #246725;
-    --bs-btn-disabled-border-color: #246725;
+    --bs-btn-disabled-bg: #154216;
+    --bs-btn-disabled-border-color: #154216;
 }
 
 .btn-outline-primary {
@@ -3556,19 +3577,19 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-success {
-    --bs-btn-color: #246725;
-    --bs-btn-border-color: #246725;
+    --bs-btn-color: #154216;
+    --bs-btn-border-color: #154216;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #246725;
-    --bs-btn-hover-border-color: #246725;
-    --bs-btn-focus-shadow-rgb: 36, 103, 37;
+    --bs-btn-hover-bg: #154216;
+    --bs-btn-hover-border-color: #154216;
+    --bs-btn-focus-shadow-rgb: 21, 66, 22;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #246725;
-    --bs-btn-active-border-color: #246725;
+    --bs-btn-active-bg: #154216;
+    --bs-btn-active-border-color: #154216;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #246725;
+    --bs-btn-disabled-color: #154216;
     --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #246725;
+    --bs-btn-disabled-border-color: #154216;
     --bs-gradient: none;
 }
 
@@ -5918,13 +5939,16 @@ fieldset:disabled .btn {
 
 .modal.fade .modal-dialog {
     transition: transform 0.3s ease-out;
-    transform: translate(0, -50px);
 }
 
 @media (prefers-reduced-motion: reduce) {
     .modal.fade .modal-dialog {
         transition: none;
     }
+}
+
+.modal.fade .modal-dialog {
+    transform: translate(0, -50px);
 }
 
 .modal.show .modal-dialog {
@@ -7500,8 +7524,8 @@ fieldset:disabled .btn {
 
 .link-success:hover,
 .link-success:focus {
-    color: RGBA(29, 82, 30, var(--bs-link-opacity, 1)) !important;
-    text-decoration-color: RGBA(29, 82, 30, var(--bs-link-underline-opacity, 1)) !important;
+    color: RGBA(17, 53, 18, var(--bs-link-opacity, 1)) !important;
+    text-decoration-color: RGBA(17, 53, 18, var(--bs-link-underline-opacity, 1)) !important;
 }
 
 .link-body-emphasis {
@@ -13275,6 +13299,4 @@ fieldset:disabled .btn {
 
 
 
-
-
-/*# sourceMappingURL=global.css.map */
+/*# sourceMappingURL=globalGenerated2.css.map */
